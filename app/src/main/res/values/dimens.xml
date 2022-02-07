@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_small">8dp</dimen>
-    <dimen name="bottom_sheet_peak_height">100dp</dimen>
+    <dimen name="bottom_sheet_peak_height">150dp</dimen>
     <dimen name="bottom_sheet_line_width">25dp</dimen>
     <dimen name="bottom_sheet_line_height">1dp</dimen>
     <dimen name="text_large">32sp</dimen>

@@ -3,15 +3,17 @@ package com.aroman.nasaapod
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import coil.load
 import com.aroman.nasaapod.databinding.FragmentMainBinding
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -28,6 +30,7 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
+        private var isMain = true
     }
 
     override fun onCreateView(
@@ -55,12 +58,59 @@ class MainFragment : Fragment() {
             })
         }
         setBottomSheetBehavior()
+        setBottomAppBar(view)
 
         chip_group.setOnCheckedChangeListener { _, checkedID: Int ->
             when (checkedID) {
                 chip_today.id -> viewModel.getData(dateFormat.format(Date()))
                 chip_yesterday.id -> viewModel.getData(getYesterdayDateString())
                 chip_before_yesterday.id -> viewModel.getData(getBeforeYesterdayDateString())
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
+            R.id.home -> {
+                Log.d("MENU", "hamburger is clicked ")
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        setHasOptionsMenu(true)
+        initFab()
+    }
+
+    private fun initFab() {
+        fab.setOnClickListener {
+            if (isMain) {
+                isMain = false
+                bottom_app_bar.navigationIcon = null
+                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                fab.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_back_fab))
+                bottom_app_bar.replaceMenu(R.menu.secondary_menu)
+            } else {
+                isMain = true
+                bottom_app_bar.navigationIcon =
+                    ContextCompat.getDrawable(context!!, R.drawable.ic_hamburger_menu_bottom_bar)
+                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                fab.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_plus_fab))
+                bottom_app_bar.replaceMenu(R.menu.main_menu)
             }
         }
     }
