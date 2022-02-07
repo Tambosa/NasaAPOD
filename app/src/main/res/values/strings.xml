@@ -12,4 +12,6 @@
     <string name="first_screen">First screen</string>
     <string name="second_screen">Second Screen</string>
     <string name="search">Search</string>
+    <string name="custom_theme">Custom Theme</string>
+    <string name="default_theme">Default</string>
 </resources>
