@@ -14,4 +14,11 @@
     <string name="search">Search</string>
     <string name="custom_theme">Custom Theme</string>
     <string name="default_theme">Default</string>
+    <string name="telescope">Telescope</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="weather">Weather</string>
+    <string name="curiosity">Curiosity</string>
+    <string name="opportunity">Opportunity</string>
+    <string name="spirit">Spirit</string>
 </resources>

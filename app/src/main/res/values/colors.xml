@@ -11,4 +11,9 @@
     <color name="custom_theme_light_primary">#FFB869</color>
     <color name="custom_theme_light_primary_variant">#8A5100</color>
     <color name="custom_theme_light_onPrimary">#FFFFFF</color>
+
+    <color name="colorAccent">#2962FF</color>
+    <color name="colorAccent40Alfa">#662962FF</color>
+
+
 </resources>

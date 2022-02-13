@@ -8,4 +8,8 @@
     <dimen name="small_component_corner_size">8dp</dimen>
     <dimen name="text_medium">16sp</dimen>
     <dimen name="margin_navigation_view">8dp</dimen>
+    <dimen name="margin_indicator_outer">20dp</dimen>
+    <dimen name="margin_indicator_inner">7dp</dimen>
+    <dimen name="padding_custom_tab">10dp</dimen>
+    <dimen name="text_size_custom_tab">20sp</dimen>
 </resources>

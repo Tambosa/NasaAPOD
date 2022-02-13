@@ -5,13 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import coil.load
+import com.aroman.nasaapod.api.ApiActivity
+import com.aroman.nasaapod.apibottom.ApiRoverActivity
 import com.aroman.nasaapod.databinding.FragmentMainBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -76,7 +77,9 @@ class MainFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_telescope -> activity?.let { startActivity(Intent(it, ApiActivity::class.java)) }
+
+            R.id.app_bar_fav -> activity?.let { startActivity(Intent(it, ApiRoverActivity::class.java)) }
 
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
                 ?.add(R.id.main_container, SettingsFragment())?.addToBackStack("")?.commit()

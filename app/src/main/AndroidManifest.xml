@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaAPOD">
         <activity
+            android:name=".apibottom.ApiRoverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".api.ApiActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
