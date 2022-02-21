@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import coil.load
 import com.aroman.nasaapod.api.ApiActivity
 import com.aroman.nasaapod.apibottom.ApiRoverActivity
 import com.aroman.nasaapod.databinding.FragmentMainBinding
+import com.aroman.nasaapod.databinding.FragmentMainStartBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet.*
@@ -23,8 +23,6 @@ import java.util.*
 
 class MainFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
     private val viewModel: PictureOfTheDayViewModel by viewModels()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -38,8 +36,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_main_start, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -48,7 +45,7 @@ class MainFragment : Fragment() {
         val date = dateFormat.format(Date())
 
         viewModel.getData(date)
-            .observe(this@MainFragment, Observer<PictureOfTheDayData> { renderData(it) })
+            .observe(this@MainFragment, { renderData(it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,7 +81,7 @@ class MainFragment : Fragment() {
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
                 ?.add(R.id.main_container, SettingsFragment())?.addToBackStack("")?.commit()
 
-            R.id.home -> {
+            android.R.id.home -> {
                 Log.d("MENU", "hamburger is clicked ")
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
