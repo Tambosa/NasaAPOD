@@ -3,6 +3,7 @@ package com.aroman.nasaapod.apibottom
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.aroman.nasaapod.R
 import com.aroman.nasaapod.api.CuriosityFragment
 import com.aroman.nasaapod.api.OpportunityFragment
@@ -27,9 +28,16 @@ class ApiRoverActivity : AppCompatActivity() {
     }
 
     private fun initFragment(fragment: Fragment): Boolean {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.activity_api_bottom_container, fragment)
-            .commitAllowingStateLoss()
+        supportFragmentManager.commit {
+            setCustomAnimations(
+                R.anim.slide_in,
+                R.anim.fade_out,
+                R.anim.fade_in,
+                R.anim.fade_out,
+            )
+            replace(R.id.activity_api_bottom_container, fragment)
+            addToBackStack(null)
+        }
         return true
     }
 }
