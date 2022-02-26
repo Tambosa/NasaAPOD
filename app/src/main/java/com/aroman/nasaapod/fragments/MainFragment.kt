@@ -1,4 +1,4 @@
-package com.aroman.nasaapod
+package com.aroman.nasaapod.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -12,8 +12,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import coil.load
-import com.aroman.nasaapod.api.ApiActivity
-import com.aroman.nasaapod.apibottom.ApiRoverActivity
+import com.aroman.nasaapod.*
+import com.aroman.nasaapod.activities.ApiRoverActivity
+import com.aroman.nasaapod.activities.MainActivity
+import com.aroman.nasaapod.podData.POD_Data
+import com.aroman.nasaapod.podData.POD_ViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,7 +39,7 @@ import java.util.*
 
 class MainFragment : Fragment() {
 
-    private val viewModel: PictureOfTheDayViewModel by viewModels()
+    private val viewModel: POD_ViewModel by viewModels()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     private var isExpanded = false
@@ -58,8 +61,7 @@ class MainFragment : Fragment() {
 
         val date = dateFormat.format(Date())
 
-        viewModel.getData(date)
-            .observe(this@MainFragment, { renderData(it) })
+        viewModel.getData(date).observe(this@MainFragment, { renderData(it) })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -93,18 +95,13 @@ class MainFragment : Fragment() {
                 startActivity(
                     Intent(
                         it,
-                        ApiActivity::class.java
+                        ApiRoverActivity::class.java
                     )
                 )
             }
 
             R.id.app_bar_fav -> activity?.let {
-                startActivity(
-                    Intent(
-                        it,
-                        ApiRoverActivity::class.java
-                    )
-                )
+                //nothing now
             }
 
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
@@ -164,9 +161,9 @@ class MainFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun renderData(data: PictureOfTheDayData) {
+    private fun renderData(data: POD_Data) {
         when (data) {
-            is PictureOfTheDayData.Success -> {
+            is POD_Data.Success -> {
                 loadingLayout.visibility = View.GONE
 
                 val serverResponseData = data.serverResponseData
@@ -179,6 +176,7 @@ class MainFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+                    image_view.visibility = View.VISIBLE
                     bottom_sheet_description_header.text = serverResponseData.title
                     bottom_sheet_description.text = serverResponseData.explanation
 
@@ -186,11 +184,14 @@ class MainFragment : Fragment() {
                 }
             }
 
-            is PictureOfTheDayData.Loading -> {
+            is POD_Data.Loading -> {
+                image_view.visibility = View.INVISIBLE
+                bottom_sheet_description_header.text = ""
+                bottom_sheet_description.text = ""
                 loadingLayout.visibility = View.VISIBLE
             }
 
-            is PictureOfTheDayData.Error -> {
+            is POD_Data.Error -> {
                 loadingLayout.visibility = View.GONE
             }
         }

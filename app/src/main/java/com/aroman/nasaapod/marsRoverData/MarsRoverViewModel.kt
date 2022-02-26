@@ -1,10 +1,9 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.marsRoverData
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.aroman.nasaapod.BuildConfig
-import com.aroman.nasaapod.PODServerResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

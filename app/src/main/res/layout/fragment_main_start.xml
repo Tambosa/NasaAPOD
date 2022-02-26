@@ -5,15 +5,13 @@
     android:id="@+id/main_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_small"
-    tools:context=".MainFragment">
+    tools:context=".fragments.MainFragment">
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/motion_layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/padding_main_container"
-        android:paddingEnd="@dimen/padding_main_container"
+        android:layout_marginTop="@dimen/margin_small"
         app:layoutDescription="@xml/motion_scene_open">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -133,6 +131,7 @@
         android:backgroundTint="?attr/colorPrimaryVariant"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"
+        tools:ignore="ContentDescription" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

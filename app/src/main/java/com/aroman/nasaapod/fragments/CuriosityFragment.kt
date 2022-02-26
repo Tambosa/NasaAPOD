@@ -1,4 +1,4 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
+import com.aroman.nasaapod.marsRoverData.MarsRoverData
+import com.aroman.nasaapod.marsRoverData.MarsRoverViewModel
 import com.aroman.nasaapod.R
 import kotlinx.android.synthetic.main.bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_curiosity.*

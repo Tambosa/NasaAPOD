@@ -1,4 +1,4 @@
-package com.aroman.nasaapod
+package com.aroman.nasaapod.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,9 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.fragment_main.*
+import com.aroman.nasaapod.R
 import kotlinx.android.synthetic.main.fragment_settings.*
-import java.util.*
 
 class SettingsFragment : Fragment() {
 
@@ -22,10 +21,6 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_settings, container, false)
-    }
-
-    companion object {
-        fun newInstance() = SettingsFragment()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -1,9 +1,11 @@
-package com.aroman.nasaapod
+package com.aroman.nasaapod.activities
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.aroman.nasaapod.fragments.MainFragment
+import com.aroman.nasaapod.R
 import com.aroman.nasaapod.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

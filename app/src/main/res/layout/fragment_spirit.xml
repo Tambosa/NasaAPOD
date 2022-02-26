@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".api.SpiritFragment">
+    tools:context=".fragments.SpiritFragment">
 
     <ImageView
         android:id="@+id/spirit_imageview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_rover" />
+        app:srcCompat="@drawable/ic_rover"
+        tools:ignore="ContentDescription" />
 </FrameLayout>

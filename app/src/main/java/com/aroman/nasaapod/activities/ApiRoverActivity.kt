@@ -1,13 +1,13 @@
-package com.aroman.nasaapod.apibottom
+package com.aroman.nasaapod.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.aroman.nasaapod.R
-import com.aroman.nasaapod.api.CuriosityFragment
-import com.aroman.nasaapod.api.OpportunityFragment
-import com.aroman.nasaapod.api.SpiritFragment
+import com.aroman.nasaapod.fragments.CuriosityFragment
+import com.aroman.nasaapod.fragments.OpportunityFragment
+import com.aroman.nasaapod.fragments.SpiritFragment
 import kotlinx.android.synthetic.main.activity_api_rover.*
 
 class ApiRoverActivity : AppCompatActivity() {
@@ -36,7 +36,6 @@ class ApiRoverActivity : AppCompatActivity() {
                 R.anim.fade_out,
             )
             replace(R.id.activity_api_bottom_container, fragment)
-            addToBackStack(null)
         }
         return true
     }

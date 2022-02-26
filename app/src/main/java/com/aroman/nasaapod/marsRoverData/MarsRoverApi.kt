@@ -1,6 +1,5 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.marsRoverData
 
-import com.aroman.nasaapod.PODServerResponseData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

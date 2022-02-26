@@ -1,6 +1,5 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.podData
 
-import com.aroman.nasaapod.PictureOfTheDayAPI
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -9,17 +8,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-class MarsRoverRetrofitImpl {
+class POD_RetrofitImpl {
 
     private val baseUrl = "https://api.nasa.gov/"
 
-    fun getRetrofitImpl(): MarsRoverApi {
+    fun getRetrofitImpl(): POD_API {
         val podRetrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .client(createOkHttpClient(PODInterceptor()))
             .build()
-        return podRetrofit.create(MarsRoverApi::class.java)
+        return podRetrofit.create(POD_API::class.java)
     }
 
     private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {

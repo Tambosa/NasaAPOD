@@ -12,16 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaAPOD">
         <activity
-            android:name=".animations.AnimationsActivity"
+            android:name=".activities.ApiRoverActivity"
             android:exported="false" />
         <activity
-            android:name=".apibottom.ApiRoverActivity"
-            android:exported="false" />
-        <activity
-            android:name=".api.ApiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

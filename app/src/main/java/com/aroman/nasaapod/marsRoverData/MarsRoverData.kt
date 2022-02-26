@@ -1,4 +1,4 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.marsRoverData
 
 sealed class MarsRoverData {
     data class Success(val serverResponseData: MarsRoverServerResponseData) : MarsRoverData()

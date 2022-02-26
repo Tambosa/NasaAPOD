@@ -1,4 +1,4 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import coil.load
+import com.aroman.nasaapod.marsRoverData.MarsRoverData
+import com.aroman.nasaapod.marsRoverData.MarsRoverViewModel
 import com.aroman.nasaapod.R
 import kotlinx.android.synthetic.main.fragment_curiosity.*
-import kotlinx.android.synthetic.main.fragment_opportunity.*
+import kotlinx.android.synthetic.main.fragment_spirit.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class OpportunityFragment : Fragment() {
+class SpiritFragment : Fragment() {
     private val viewModel: MarsRoverViewModel by viewModels()
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
@@ -22,15 +24,15 @@ class OpportunityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_opportunity, container, false)
+        return inflater.inflate(R.layout.fragment_spirit, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         //val date = dateFormat.format(Date())
-        //date is hardcoded. Photos are not posted every day. TODO fix later
-        viewModel.getOpportunityData("2018-03-6").observe(this@OpportunityFragment, { renderData(it) })
+        //date is hardcoded. Photos are not posted every day.
+        viewModel.getSpiritData("2009-03-25").observe(this@SpiritFragment, { renderData(it) })
     }
 
     private fun renderData(data: MarsRoverData) {
@@ -45,17 +47,17 @@ class OpportunityFragment : Fragment() {
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
-                    opportunity_imageview.load(imgSrc) {
-                        lifecycle(this@OpportunityFragment)
+                    spirit_imageview.load(imgSrc) {
+                        lifecycle(this@SpiritFragment)
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
 
                     var iterator = 0
-                    opportunity_imageview.setOnClickListener {
+                    spirit_imageview.setOnClickListener {
                         imgSrc = serverResponseData.photos[iterator++].img_src
-                        opportunity_imageview.load(imgSrc) {
-                            lifecycle(this@OpportunityFragment)
+                        spirit_imageview.load(imgSrc) {
+                            lifecycle(this@SpiritFragment)
                             error(R.drawable.ic_load_error_vector)
                             placeholder(R.drawable.ic_no_photo_vector)
                         }

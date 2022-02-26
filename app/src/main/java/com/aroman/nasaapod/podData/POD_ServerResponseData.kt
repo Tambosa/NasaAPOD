@@ -1,8 +1,8 @@
-package com.aroman.nasaapod
+package com.aroman.nasaapod.podData
 
 import com.google.gson.annotations.SerializedName
 
-data class PODServerResponseData(
+data class POD_ServerResponseData(
     @field:SerializedName("copyright") val copyright: String?,
     @field:SerializedName("date") val date: String?,
     @field:SerializedName("explanation") val explanation: String?,

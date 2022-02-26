@@ -1,4 +1,4 @@
-package com.aroman.nasaapod.api
+package com.aroman.nasaapod.marsRoverData
 
 import com.google.gson.annotations.SerializedName
 
