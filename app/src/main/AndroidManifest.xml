@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaAPOD">
         <activity
+            android:name=".activities.RecyclerNotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ApiRoverActivity"
             android:exported="false" />
         <activity

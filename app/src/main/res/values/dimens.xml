@@ -14,4 +14,12 @@
     <dimen name="text_size_custom_tab">20sp</dimen>
     <dimen name="padding_main_container">10dp</dimen>
     <dimen name="margin_wiki_button">10dp</dimen>
+    <dimen name="margin_recycler_activity_fab">15dp</dimen>
+    <dimen name="margin_recycler_item_title">15dp</dimen>
+    <dimen name="text_size_recycler_item_title">24sp</dimen>
+    <dimen name="text_size_recycler_item_date">18sp</dimen>
+    <dimen name="text_size_note_title">32sp</dimen>
+    <dimen name="text_size_note_content">24sp</dimen>
+    <dimen name="text_size_save_button">32sp</dimen>
+    <dimen name="padding_note_content">16dp</dimen>
 </resources>

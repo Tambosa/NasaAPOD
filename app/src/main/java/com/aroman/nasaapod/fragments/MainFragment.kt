@@ -15,6 +15,7 @@ import coil.load
 import com.aroman.nasaapod.*
 import com.aroman.nasaapod.activities.ApiRoverActivity
 import com.aroman.nasaapod.activities.MainActivity
+import com.aroman.nasaapod.activities.RecyclerNotesActivity
 import com.aroman.nasaapod.podData.POD_Data
 import com.aroman.nasaapod.podData.POD_ViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -92,16 +93,11 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_telescope -> activity?.let {
-                startActivity(
-                    Intent(
-                        it,
-                        ApiRoverActivity::class.java
-                    )
-                )
+                startActivity(Intent(it, ApiRoverActivity::class.java))
             }
 
             R.id.app_bar_fav -> activity?.let {
-                //nothing now
+                startActivity(Intent(it, RecyclerNotesActivity::class.java))
             }
 
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()
