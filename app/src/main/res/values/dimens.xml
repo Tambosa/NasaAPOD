@@ -6,7 +6,7 @@
     <dimen name="bottom_sheet_line_height">1dp</dimen>
     <dimen name="text_large">32sp</dimen>
     <dimen name="small_component_corner_size">8dp</dimen>
-    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
     <dimen name="margin_navigation_view">8dp</dimen>
     <dimen name="margin_indicator_outer">20dp</dimen>
     <dimen name="margin_indicator_inner">7dp</dimen>

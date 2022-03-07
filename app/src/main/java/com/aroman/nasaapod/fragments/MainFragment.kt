@@ -1,8 +1,14 @@
 package com.aroman.nasaapod.fragments
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.transition.*
 import android.util.Log
 import android.view.*
@@ -20,9 +26,7 @@ import com.aroman.nasaapod.podData.POD_Data
 import com.aroman.nasaapod.podData.POD_ViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_sheet.*
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.bottom_app_bar
 import kotlinx.android.synthetic.main.fragment_main.chip_before_yesterday
 import kotlinx.android.synthetic.main.fragment_main.chip_group
@@ -34,7 +38,6 @@ import kotlinx.android.synthetic.main.fragment_main.input_edit_text
 import kotlinx.android.synthetic.main.fragment_main.input_layout
 import kotlinx.android.synthetic.main.fragment_main.loadingLayout
 import kotlinx.android.synthetic.main.fragment_main.motion_layout_main
-import kotlinx.android.synthetic.main.fragment_main_start.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -62,7 +65,7 @@ class MainFragment : Fragment() {
 
         val date = dateFormat.format(Date())
 
-        viewModel.getData(date).observe(this@MainFragment, { renderData(it) })
+        viewModel.getData(date).observe(viewLifecycleOwner) { renderData(it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -127,14 +130,27 @@ class MainFragment : Fragment() {
                 isMain = false
                 bottom_app_bar.navigationIcon = null
                 bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                fab.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_back_fab))
+                fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_back_fab
+                    )
+                )
                 bottom_app_bar.replaceMenu(R.menu.secondary_menu)
             } else {
                 isMain = true
                 bottom_app_bar.navigationIcon =
-                    ContextCompat.getDrawable(context!!, R.drawable.ic_hamburger_menu_bottom_bar)
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_hamburger_menu_bottom_bar
+                    )
                 bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                fab.setImageDrawable(ContextCompat.getDrawable(context!!, R.drawable.ic_plus_fab))
+                fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 bottom_app_bar.replaceMenu(R.menu.main_menu)
             }
         }
@@ -173,7 +189,41 @@ class MainFragment : Fragment() {
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
                     image_view.visibility = View.VISIBLE
-                    bottom_sheet_description_header.text = serverResponseData.title
+
+                    val spannable = SpannableString(serverResponseData.title)
+                    spannable.apply {
+                        setSpan(
+                            ForegroundColorSpan(Color.parseColor("#F97C3C")),
+                            0,
+                            (spannable.length / 5),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        setSpan(
+                            ForegroundColorSpan(Color.parseColor("#FDB54E")),
+                            0 + (spannable.length / 5),
+                            (spannable.length / 5) * 2,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        setSpan(
+                            ForegroundColorSpan(Color.parseColor("#64B678")),
+                            0 + (spannable.length / 5) * 2,
+                            (spannable.length / 5) * 3,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        setSpan(
+                            ForegroundColorSpan(Color.parseColor("#478AEA")),
+                            0 + (spannable.length / 5) * 3,
+                            (spannable.length / 5) * 4,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                        setSpan(
+                            ForegroundColorSpan(Color.parseColor("#8446CC")),
+                            0 + (spannable.length / 5) * 4,
+                            spannable.length,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
+                    }
+                    bottom_sheet_description_header.text = spannable
                     bottom_sheet_description.text = serverResponseData.explanation
 
                     image_view.setOnClickListener { initExpansionAnimation() }
