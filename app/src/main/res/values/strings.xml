@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">NasaAPOD</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="photo_of_the_day_stub">photo of the day</string>
+    <string name="search_wiki">Search wiki</string>
+    <string name="wiki_helper_text">Search definition on wiki</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="before_yesterday">Before yesterday</string>
+    <string name="favourite">Favourite</string>
+    <string name="settings">Settings</string>
+    <string name="first_screen">First screen</string>
+    <string name="second_screen">Second Screen</string>
+    <string name="search">Search</string>
+    <string name="custom_theme">Custom Theme</string>
+    <string name="default_theme">Default</string>
+    <string name="telescope">Telescope</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="weather">Weather</string>
+    <string name="curiosity">Curiosity</string>
+    <string name="opportunity">Opportunity</string>
+    <string name="spirit">Spirit</string>
+    <string name="animate">Animate</string>
+    <string name="save">SAVE</string>
 </resources>

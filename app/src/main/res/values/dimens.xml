@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="bottom_sheet_peak_height">150dp</dimen>
+    <dimen name="bottom_sheet_line_width">25dp</dimen>
+    <dimen name="bottom_sheet_line_height">1dp</dimen>
+    <dimen name="text_large">32sp</dimen>
+    <dimen name="small_component_corner_size">8dp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="margin_navigation_view">8dp</dimen>
+    <dimen name="margin_indicator_outer">20dp</dimen>
+    <dimen name="margin_indicator_inner">7dp</dimen>
+    <dimen name="padding_custom_tab">10dp</dimen>
+    <dimen name="text_size_custom_tab">20sp</dimen>
+    <dimen name="padding_main_container">10dp</dimen>
+    <dimen name="margin_wiki_button">10dp</dimen>
+    <dimen name="margin_recycler_activity_fab">15dp</dimen>
+    <dimen name="margin_recycler_item_title">15dp</dimen>
+    <dimen name="text_size_recycler_item_title">24sp</dimen>
+    <dimen name="text_size_recycler_item_date">18sp</dimen>
+    <dimen name="text_size_note_title">32sp</dimen>
+    <dimen name="text_size_note_content">24sp</dimen>
+    <dimen name="text_size_save_button">32sp</dimen>
+    <dimen name="padding_note_content">16dp</dimen>
+</resources>

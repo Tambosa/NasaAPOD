@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_view_curiosity"
+        android:icon="@drawable/ic_rover"
+        android:title="@string/curiosity"/>
+
+    <item
+        android:id="@+id/bottom_view_opportunity"
+        android:icon="@drawable/ic_rover"
+        android:title="@string/opportunity"/>
+
+    <item
+        android:id="@+id/bottom_view_spirit"
+        android:icon="@drawable/ic_rover"
+        android:title="@string/spirit"/>
+</menu>
